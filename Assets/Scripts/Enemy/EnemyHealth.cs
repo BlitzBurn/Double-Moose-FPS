@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public static float HealtPoints;
     public int AmountOfHealth;
 
-    
+    public EnemyDead ded;
 
     void Start()
     {
@@ -22,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
         if (AmountOfHealth == 0)
         {
             Destroy(gameObject);
+            ded.DropAmmoPack();
             
         }
 

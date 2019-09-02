@@ -41,7 +41,9 @@ public class ShootWeapon : MonoBehaviour
         {
             
             GameObject instantiatedProjectile = Instantiate(plasmaProjectile, gun.position, gun.rotation);
+
             Rigidbody projectileRigidbody = instantiatedProjectile.GetComponent<Rigidbody>();
+
             projectileRigidbody.AddForce(gun.forward*bulletSpeed);
 
             currentAmmo = currentAmmo - 1;

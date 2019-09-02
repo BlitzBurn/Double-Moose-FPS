@@ -24,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         if (time >= invisFrames) {
             playerHealth -= 1;
             time = 0;
+            Debug.Log("Headshot");
         }
     }
 

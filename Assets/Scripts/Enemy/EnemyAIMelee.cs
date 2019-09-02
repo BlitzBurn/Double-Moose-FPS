@@ -9,6 +9,7 @@ public class EnemyAIMelee : MonoBehaviour
     public GameObject enemy;
 
     public NavMeshAgent agent;
+
     RaycastHit hit;
 
     float distance;
