@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyAIMelee : MonoBehaviour
 {
     public GameObject player;
+    private GameObject playerTracker;
+
     public GameObject enemy;
 
     public NavMeshAgent agent;
@@ -17,10 +19,11 @@ public class EnemyAIMelee : MonoBehaviour
 
     private bool hasLineOfSight;
 
-    public PlayerHealth ph;
+    //public PlayerHealth ph;
 
     public void Start()
     {
+        playerTracker = GameObject.FindWithTag("Player");
         
     }
 
@@ -33,22 +36,21 @@ public class EnemyAIMelee : MonoBehaviour
     {
         if (distance <= attackRange && hasLineOfSight == true) 
         {
-            //PlayerHealth ph = gameObject.GetComponent<PlayerHealth>();
-
-            ph.PlayerTakesDamage();
+            PlayerHealth playerHealthReference = GameObject.FindObjectOfType(typeof(PlayerHealth)) as PlayerHealth;
+            playerHealthReference.PlayerTakesDamage();
         }
     }
 
     void FixedUpdate()
     {
-        agent.SetDestination(player.transform.position);
+        agent.SetDestination(playerTracker.transform.position);
 
-        distance = Vector3.Distance(enemy.transform.position, (player.transform.position));
+        distance = Vector3.Distance(enemy.transform.position, (playerTracker.transform.position));
 
-        if (Physics.Raycast(enemy.transform.position, (player.transform.position- enemy.transform.position), out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Player")
+        if (Physics.Raycast(enemy.transform.position, (playerTracker.transform.position- enemy.transform.position), out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Player")
         {
             
-            Debug.DrawRay(enemy.transform.position, (player.transform.position-enemy.transform.position), Color.red);
+            //Debug.DrawRay(enemy.transform.position, (playerTracker.transform.position-enemy.transform.position), Color.red);
             hasLineOfSight = true;
 
             

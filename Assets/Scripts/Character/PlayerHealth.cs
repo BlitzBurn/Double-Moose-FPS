@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (playerHealth == 0 && playerIsAlive == true)
+        if (playerHealth == 0 )
         {
             playerIsAlive = false;
             Debug.Log("You ded, big boy");

@@ -6,7 +6,7 @@ public class ShootWeapon : MonoBehaviour
 {
     public GameObject plasmaProjectile;
     public Transform gun;
-    public float weaponFireRate;
+    public static float weaponFireRate=0.2f;
     private float time;
 
     public float bulletSpeed;
@@ -25,10 +25,32 @@ public class ShootWeapon : MonoBehaviour
       
     }
 
+    public void ShootWeaponStandard()
+    {
+        GameObject instantiatedProjectile = Instantiate(plasmaProjectile, gun.position, gun.rotation);
+
+        Rigidbody projectileRigidbody = instantiatedProjectile.GetComponent<Rigidbody>();
+
+        projectileRigidbody.AddForce(gun.forward * bulletSpeed);
+    }
     
+    public void ShootWeaponQuadDamage()
+    {
+        for(int i = 0; i<4; i++)
+        {
+            GameObject instantiatedProjectile = Instantiate(plasmaProjectile, gun.position, gun.rotation);
+
+            Rigidbody projectileRigidbody = instantiatedProjectile.GetComponent<Rigidbody>();
+
+            int angle = +i;
+            Debug.Log("Kaboom");
+            projectileRigidbody.AddForce((gun.forward) * bulletSpeed);
+        }
+    }
+
     void FixedUpdate()
     {
-       // maxAmmo = Mathf.Clamp(maxAmmo, 0, ammo);
+       
 
         if (currentAmmo>maxAmmo)
         {
@@ -39,13 +61,10 @@ public class ShootWeapon : MonoBehaviour
 
         if (Input.GetButton("Fire1") && time >= weaponFireRate && currentAmmo>0)
         {
+          
+                ShootWeaponStandard();
+          
             
-            GameObject instantiatedProjectile = Instantiate(plasmaProjectile, gun.position, gun.rotation);
-
-            Rigidbody projectileRigidbody = instantiatedProjectile.GetComponent<Rigidbody>();
-
-            projectileRigidbody.AddForce(gun.forward*bulletSpeed);
-
             currentAmmo = currentAmmo - 1;
 
             time = 0;

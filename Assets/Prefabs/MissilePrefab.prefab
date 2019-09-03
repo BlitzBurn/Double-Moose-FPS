@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653c3bdf163be6e41b328d2e64a9fba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Missile: {fileID: 3485564826284296799}
   playerHealthReference: {fileID: 2236029695574989843, guid: 20bbb84f37f6fbb46a7e5e5a132149fb,
     type: 3}
 --- !u!1 &3485564827724710199

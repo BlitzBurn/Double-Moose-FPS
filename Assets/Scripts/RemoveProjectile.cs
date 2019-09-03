@@ -6,7 +6,7 @@ public class RemoveProjectile : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Player") {
+        if (collision.gameObject.tag != "Player"&&collision.gameObject.tag!="Plasmatag") {
             DestroyProjectile();
         }
         
@@ -14,7 +14,7 @@ public class RemoveProjectile : MonoBehaviour
 
     public void DestroyProjectile()
     {
-       
+
         Destroy(gameObject);
     }
 
