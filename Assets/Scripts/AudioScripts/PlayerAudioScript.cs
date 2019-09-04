@@ -24,7 +24,7 @@ public class PlayerAudioScript : MonoBehaviour
 
     public void PlayWeaponSound()
     {
-        Debug.Log("fire");
+
         weaponFireSource.Play();
     }
 

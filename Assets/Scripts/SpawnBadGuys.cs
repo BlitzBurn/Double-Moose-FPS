@@ -11,16 +11,38 @@ public class SpawnBadGuys : MonoBehaviour
     public GameObject spawnPoint1, spawnPoint2, spawnPoint3, spawnPoint4, spawnPoint5, spawnPoint6, spawnPoint7;
     private GameObject BaseSpawnPoint;
 
+    public float enemyRespawnTimer;
+    private float time;
+
     private float spawnModifierX, spawnModifierZ, spawnBaseX, spawnBaseZ;
 
     void Start()
     {
-        for(int i=0; i<5; i++)
+        SpawnSomeEnemies();
+    }
+
+    void Update()
+    {
+        time += Time.deltaTime;
+
+        if (time>=enemyRespawnTimer)
+        {
+            SpawnSomeEnemies();
+            time = 0;
+        }
+
+    }
+
+
+    private void SpawnSomeEnemies()
+    {
+        int numberOfEnemies = Random.Range(4,8);
+
+        for (int i = 0; i < numberOfEnemies; i++)
         {
             GenerateSpawnPlace();
         }
     }
-      
 
     private void GenerateSpawnPlace()
     {
@@ -60,16 +82,16 @@ public class SpawnBadGuys : MonoBehaviour
 
         Vector3 spawnPlace = (new Vector3(spawnModifierX, 0f, spawnModifierZ) + BaseSpawnPoint.transform.position);
 
-        int typeOfEnemy = 1;//Random.Range(2, 3);
+        int typeOfEnemy = Random.Range(1, 4);
 
         if (typeOfEnemy == 1 || typeOfEnemy == 2)
         {
-            Debug.Log(typeOfEnemy);
+            
             SpawnMeleeEnemy(spawnPlace);
         }
         else if (typeOfEnemy == 3)
         {
-            Debug.Log(typeOfEnemy);
+
             SpawnRangedEnemy(spawnPlace);
         }
 

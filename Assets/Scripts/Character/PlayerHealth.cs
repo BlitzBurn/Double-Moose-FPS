@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         if (time >= invisFrames) {
             playerHealth -= 1;
             time = 0;
-            Debug.Log("Headshot");
+
         }
     }
 
@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
             styleDead.fontSize = 30;
             styleDead.normal.textColor = Color.red;
 
-            GUI.Label(new Rect(Screen.width / 2 - 200, Screen.height - 30, 400, 30), "Game Over", styleDead);
+            GUI.Label(new Rect(Screen.width / 2 - 200, Screen.height - 250, 400, 30), "Game Over", styleDead);
         }
     }
 

@@ -26,31 +26,51 @@ public class StormFire : MonoBehaviour
         }
     }
 
+    private IEnumerator StormFireActivated()
+    {
+        stormFireEnabled = true;
+        
+
+        yield return new WaitForSeconds(stormFireDuration);
+        stormFireEnabled = false;
+        
+        Destroy(stormFireOrb);
+
+    }
+
     void Awake()
     {
         stormFireEnabled = false;
-        stormFireTimer = 0;
+        stormFireTimer = 100;
     }
 
-    
-    void FixedUpdate()
+    private void Update()
     {
-       
         stormFireTimer += Time.deltaTime;
 
-        if (stormFireEnabled == true&& stormFireTimer <= stormFireDuration)
+        if (stormFireEnabled==true)
         {
-            Debug.Log("StormFire Enabled");
             ShootWeapon.weaponFireRate = 0.05f;
             ShootWeapon.currentAmmo = ShootWeapon.maxAmmo;
         }
-        else if (stormFireTimer >= stormFireDuration && stormFireEnabled==true)
+        else if (stormFireEnabled == false)
         {
-            Debug.Log(stormFireTimer);
-            ShootWeapon.weaponFireRate = 0.3f;
-            stormFireEnabled = false;
-            Destroy(stormFireOrb);
+            ShootWeapon.weaponFireRate = 0.2f;
         }
-        
+       
     }
+
+    void OnGUI()
+    {
+         if (stormFireEnabled==true)
+         {
+            GUIStyle stormFireStyle = new GUIStyle();
+            stormFireStyle.alignment = TextAnchor.MiddleCenter;
+            stormFireStyle.fontSize = 30;
+            stormFireStyle.normal.textColor = Color.cyan;
+
+            GUI.Label(new Rect(Screen.width / 2 - 200, Screen.height - 370, 400, 30), "StormFire", stormFireStyle);
+          }
+    }
+
 }
