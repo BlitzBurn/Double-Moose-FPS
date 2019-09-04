@@ -29,7 +29,7 @@ public class EnemyAIMelee : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(30, 30, 180, 80), "Distance: " +distance+hasLineOfSight );
+        //GUI.Label(new Rect(30, 30, 180, 80), "Distance: " +distance+hasLineOfSight );
     }
 
     private void Update()

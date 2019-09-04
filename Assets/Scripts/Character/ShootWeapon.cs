@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShootWeapon : MonoBehaviour
 {
+    public PlayerAudioScript audioScriptWeapon;
+
     public GameObject plasmaProjectile;
     public Transform gun;
     public static float weaponFireRate=0.2f;
@@ -27,10 +29,10 @@ public class ShootWeapon : MonoBehaviour
 
     public void ShootWeaponStandard()
     {
+        audioScriptWeapon.PlayWeaponSound();
+
         GameObject instantiatedProjectile = Instantiate(plasmaProjectile, gun.position, gun.rotation);
-
         Rigidbody projectileRigidbody = instantiatedProjectile.GetComponent<Rigidbody>();
-
         projectileRigidbody.AddForce(gun.forward * bulletSpeed);
     }
     
@@ -73,6 +75,7 @@ public class ShootWeapon : MonoBehaviour
 
     void OnGUI()
     {
+        if(PlayerHealth.playerIsAlive==true)
         GUI.Label(new Rect(10, 10, 150, 50), "Ammo: " + currentAmmo + " /  " + maxAmmo);
     }
 }

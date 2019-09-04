@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - DamageSource
   - BulletTag
+  - AmmoBox
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3485564826284296798}
   - component: {fileID: 5369133692881424580}
   - component: {fileID: 1495439107041408302}
+  - component: {fileID: 1454302219646773349}
   m_Layer: 0
   m_Name: MissilePrefab
   m_TagString: Untagged
@@ -129,6 +130,18 @@ MonoBehaviour:
   Missile: {fileID: 3485564826284296799}
   playerHealthReference: {fileID: 2236029695574989843, guid: 20bbb84f37f6fbb46a7e5e5a132149fb,
     type: 3}
+--- !u!114 &1454302219646773349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3485564826284296799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03acf8e7448982d44b9142193ec21e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3485564827724710199
 GameObject:
   m_ObjectHideFlags: 0

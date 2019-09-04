@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
+    
 
     public GameObject Player;
     public Transform playerTransform;
@@ -27,9 +28,9 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump")&&PlayerIsTouchingTheGround==true)
         {
-            
-            PlayerRidgidbody = Player.GetComponent<Rigidbody>();
+            //audioScriptWeapon.PlayJumpSound();
 
+            PlayerRidgidbody = Player.GetComponent<Rigidbody>();
             PlayerRidgidbody.AddForce(playerTransform.up*jumpForce);
         }
     }
