@@ -21,7 +21,7 @@ public class StormFire : MonoBehaviour
             SpawnStormFire.timeToStormFireSpawn=0;
 
             stormFireTimer = 0;
-            stormFireEnabled = true;
+            StartCoroutine(StormFireActivated());
             Debug.Log(stormFireEnabled);
             Debug.Log(stormFireTimer);
             
@@ -32,11 +32,11 @@ public class StormFire : MonoBehaviour
     private IEnumerator StormFireActivated()
     {
         stormFireEnabled = true;
-        
+        ShootWeapon.weaponFireRate = 0.05f;
 
         yield return new WaitForSeconds(stormFireDuration);
         stormFireEnabled = false;
-        
+        ShootWeapon.weaponFireRate = 0.2f;
         Destroy(stormFireOrb);
 
     }
@@ -53,12 +53,12 @@ public class StormFire : MonoBehaviour
 
         if (stormFireEnabled==true)
         {
-            ShootWeapon.weaponFireRate = 0.05f;
+         
             ShootWeapon.currentAmmo = ShootWeapon.maxAmmo;
         }
         else if (stormFireEnabled == false)
         {
-            ShootWeapon.weaponFireRate = 0.2f;
+           
         }
        
     }

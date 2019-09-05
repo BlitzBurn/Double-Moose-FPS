@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyAIRanged : MonoBehaviour
 {
+    public EnemySoundScript audioScriptEnemy;
+
     //public GameObject player;
     public GameObject enemy;
     public GameObject missile;
@@ -29,9 +31,20 @@ public class EnemyAIRanged : MonoBehaviour
         time = 0f;
     }
 
-    private void Update()
+    public IEnumerator FireRocket()
     {
+
+        timeBetweenShots = Random.Range(3f, 5f);
+        time = 0;
+        yield return new WaitForSeconds(1);
+
         
+
+        GameObject instantiatedMissile = Instantiate(missile, barrel.transform.position, barrel.transform.rotation);
+
+        Rigidbody missileRigidbody = instantiatedMissile.GetComponent<Rigidbody>();
+
+        missileRigidbody.AddForce((playerTracker.transform.position - barrel.transform.position) * missileSpeed);
     }
 
     void FixedUpdate()
@@ -42,15 +55,9 @@ public class EnemyAIRanged : MonoBehaviour
 
         if (Physics.Raycast(enemy.transform.position, (playerTracker.transform.position - enemy.transform.position), out los, range) && los.transform.gameObject.tag =="Player" && time>=timeBetweenShots)
         {
-           // FireMissile();
-            timeBetweenShots = Random.Range(3f, 5f);
-            time = 0;
+            audioScriptEnemy.FireRocketSound();
+            StartCoroutine(FireRocket());
 
-            GameObject instantiatedMissile = Instantiate(missile, barrel.transform.position, barrel.transform.rotation);
-
-            Rigidbody missileRigidbody = instantiatedMissile.GetComponent<Rigidbody>();
-
-            missileRigidbody.AddForce((playerTracker.transform.position-barrel.transform.position) * missileSpeed);
         }
 
     }

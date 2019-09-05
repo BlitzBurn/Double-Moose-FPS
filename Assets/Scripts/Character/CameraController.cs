@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
-   
-
     public static float mouseSensitivity=5f;
 
     private float cameraRotationHorizontal=0.0f;

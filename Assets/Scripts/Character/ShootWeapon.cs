@@ -75,7 +75,12 @@ public class ShootWeapon : MonoBehaviour
 
     void OnGUI()
     {
-        if(PlayerHealth.playerIsAlive==true)
-        GUI.Label(new Rect(10, 10, 150, 50), "Ammo: " + currentAmmo + " /  " + maxAmmo);
+
+        GUIStyle ammoStyle = new GUIStyle();
+        ammoStyle.fontSize = 25;
+        ammoStyle.normal.textColor = Color.white;
+
+        if (PlayerHealth.playerIsAlive==true)
+        GUI.Label(new Rect(10, 10, 150, 50), "Ammo: " + currentAmmo + " /  " + maxAmmo, ammoStyle);
     }
 }

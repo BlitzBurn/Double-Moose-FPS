@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public GameObject gun;
     public GameObject canvasObject;
+    public GameObject cameraObj;
 
     public  int playerHealth=10;
     public static bool isVulnerable;
@@ -52,16 +53,22 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<CharacterMovement>().enabled = false;
         GetComponent<PlayerRotator>().enabled = false;
         GetComponent<ShootWeapon>().enabled = false;
-        // GetComponent<>().enabled = false;
+        cameraObj.GetComponent<CameraController>().enabled = false;
         canvasObject.SetActive(true);
-        
+        Cursor.lockState = CursorLockMode.None;
+
+
     }
 
     void OnGUI()
     {
         if (playerIsAlive == true)
         {
-            GUI.Label(new Rect(10, 100, 150, 150), "" + playerHealth);
+            GUIStyle healthStyle = new GUIStyle();
+            healthStyle.fontSize = 25;
+            healthStyle.normal.textColor = Color.red;
+
+            GUI.Label(new Rect(1550, 10, 10, 2050), "" + playerHealth, healthStyle);
         }
         else if(playerIsAlive==false)
         {
