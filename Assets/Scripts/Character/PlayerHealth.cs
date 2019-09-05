@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public GameObject gun;
+    public GameObject canvasObject;
 
     public  int playerHealth=10;
     public static bool isVulnerable;
@@ -51,7 +52,8 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<CharacterMovement>().enabled = false;
         GetComponent<PlayerRotator>().enabled = false;
         GetComponent<ShootWeapon>().enabled = false;
-       // GetComponent<>().enabled = false;
+        // GetComponent<>().enabled = false;
+        canvasObject.SetActive(true);
         
     }
 

@@ -5,20 +5,22 @@ using UnityEngine;
 public class SpawnStormFire : MonoBehaviour
 {
     public float stormFireTimer;
-    private float time = 0;
+    public static float timeToStormFireSpawn = 0;
 
     public GameObject stormFireSpawnPlace;
     public GameObject stormFirePrefab;
 
+    public static bool stormFireSpawnedBool;
        
     void Update()
     {
-        time += Time.deltaTime;
+        timeToStormFireSpawn += Time.deltaTime;
 
-        if (time>=stormFireTimer)
+        if (timeToStormFireSpawn >= stormFireTimer && stormFireSpawnedBool == false)
         {
+            stormFireSpawnedBool = true;
             Instantiate(stormFirePrefab, stormFireSpawnPlace.transform.position, stormFireSpawnPlace.transform.rotation);
-            time = 0;
+            timeToStormFireSpawn = 0;
         }
 
     }

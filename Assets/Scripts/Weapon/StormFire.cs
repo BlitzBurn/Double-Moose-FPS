@@ -17,6 +17,9 @@ public class StormFire : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            SpawnStormFire.stormFireSpawnedBool = false;
+            SpawnStormFire.timeToStormFireSpawn=0;
+
             stormFireTimer = 0;
             stormFireEnabled = true;
             Debug.Log(stormFireEnabled);
